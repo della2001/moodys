@@ -7,28 +7,29 @@ const ChatScreen = ({ name, timestamp }) => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
     // {
-    //   name: "Labrador",
+    //   name: "Elon Musk",
     //   image:
-    //     "https://gooddoggies.online/wp-content/uploads/2020/06/5-Tips-To-Training-A-Labrador-Puppy-1.jpg",
-    //   message: "Hey",
+    //     "https://upload.wikimedia.org/wikipedia/commons/e/ed/Elon_Musk_Royal_Society.jpg",
+    //   message: "Welcome to Moody's",
     // },
-    // {
-    //   name: "Labrador",
-    //   image:
-    //     "https://gooddoggies.online/wp-content/uploads/2020/06/5-Tips-To-Training-A-Labrador-Puppy-1.jpg",
-    //   message: "Bork bork bork",
-    // },
+    // // {
+    // //   name: "Elon Musk",
+    // //   image:
+    // //     "https://upload.wikimedia.org/wikipedia/commons/e/ed/Elon_Musk_Royal_Society.jpg",
+    // //   message: "Bork bork bork",
+    // // },
     // {
     //   message: "yo",
     // },
   ]);
-
+  //Read existing data into messages
   useEffect(() => {
     const unsubscribe = database
       .collection("messages")
-      .onSnapshot((snapshot) =>
-        setMessages(snapshot.docs.map((doc) => doc.data()))
-      );
+      .doc("room1")
+      .onSnapshot((doc) => {
+        setMessages(doc.data()["texts"]);
+      });
 
     return () => {
       unsubscribe();
@@ -37,23 +38,24 @@ const ChatScreen = ({ name, timestamp }) => {
 
   const handleSend = (e) => {
     e.preventDefault();
+    // Update messages locally
+    setMessages([...messages, { text: input }]);
+    // Update database by rewriting with messages
     database
       .collection("messages")
-      .add({
-        image: "",
-        message: input,
-        name: "",
+      .doc("room1")
+      // .onSnapshot((doc) => {
+      //   doc.data()["texts"].a;
+      // });
+      .update({
+        texts: messages,
       })
       .then((docRef) => {
-        console.log("Document written with ID", docRef.id);
+        console.log("Document Updated");
       })
       .catch((error) => {
         console.log("Error adding document: ", error);
       });
-    // setMessages({
-    //   message: input,
-    //   name: "",
-    // });
     setInput("");
   };
   return (
@@ -61,19 +63,19 @@ const ChatScreen = ({ name, timestamp }) => {
       <p className="chatScreen__timestamp">
         YOU MATCHED WITH {name} ON {timestamp}
       </p>
-      {messages.reverse().map((message) =>
-        message.name !== "" ? (
+      {messages.map((message) =>
+        message.name ? (
           <div className="chatScreen__message">
             <Avatar
               className="chatScreen__image"
               alt={message.name}
               src={message.image}
             />
-            <p className="chatScreen__text">{message.message}</p>
+            <p className="chatScreen__text">{message.text}</p>
           </div>
         ) : (
           <div className="chatScreen__message">
-            <p className="chatScreen__owntext">{message.message}</p>
+            <p className="chatScreen__owntext">{message.text}</p>
           </div>
         )
       )}

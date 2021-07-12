@@ -1,13 +1,13 @@
 .chatScreen__text {
   margin-left: 10px;
   background-color: lightgray;
-  padding: 15px;
+  padding: 10px;
   border-radius: 20px;
 }
 
 .chatScreen__message {
   display: flex;
-  padding: 20px;
+  padding: 15px;
   align-items: center;
 }
 
@@ -20,7 +20,7 @@
 .chatScreen__owntext {
   margin-left: auto;
   background-color: #29b3cd;
-  padding: 15px;
+  padding: 10px;
   border-radius: 20px;
   color: white;
 }
@@ -46,4 +46,5 @@
   background-color: white;
   font-weight: bolder;
   color: #fe3d71;
+  cursor: pointer;
 }
