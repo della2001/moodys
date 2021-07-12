@@ -3,7 +3,7 @@ import "./Chat.css";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 
-const Chat = ({ name, message, profilePic, timestamp }) => {
+const Chat = ({ name, message, profilePic, team }) => {
   return (
     <Link to={`/chat/${name}`}>
       <div className="chat">
@@ -12,7 +12,7 @@ const Chat = ({ name, message, profilePic, timestamp }) => {
           <h2>{name}</h2>
           <p>{message}</p>
         </div>
-        <p className="chat__timestamp">{timestamp}</p>
+        <p className="chat__timestamp">{team}</p>
       </div>
     </Link>
   );

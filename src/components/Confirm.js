@@ -4,11 +4,31 @@ import AppBar from "@material-ui/core/AppBar";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import { List, ListItem, ListItemText } from "@material-ui/core/";
 import Button from "@material-ui/core/Button";
+import database from "../firebase";
 
 export class Confirm extends Component {
   continue = (e) => {
     e.preventDefault();
     // PROCESS FORM //
+    database
+      .collection("people")
+      .add({
+        firstName: this.props.values.firstName,
+        lastName: this.props.values.lastName,
+        email: this.props.values.email,
+        team: this.props.values.team,
+        city: this.props.values.city,
+        time: this.props.values.time,
+        school: this.props.values.school,
+        hobbies: this.props.values.hobbies,
+        show: this.props.values.show,
+      })
+      .then((docRef) => {
+        console.log("Document written with ID", docRef.id);
+      })
+      .catch((error) => {
+        console.log("Error adding document: ", error);
+      });
     this.props.nextStep();
   };
 

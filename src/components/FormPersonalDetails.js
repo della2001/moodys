@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import AppBar from '@material-ui/core/AppBar';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import React, { Component } from "react";
+import Dialog from "@material-ui/core/Dialog";
+import AppBar from "@material-ui/core/AppBar";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export class FormPersonalDetails extends Component {
-  continue = e => {
+  continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
 
-  back = e => {
+  back = (e) => {
     e.preventDefault();
     this.props.prevStep();
   };
@@ -21,17 +21,13 @@ export class FormPersonalDetails extends Component {
     return (
       <MuiThemeProvider>
         <>
-          <Dialog
-            open
-            fullWidth
-            maxWidth='sm'
-          >
+          <Dialog open fullWidth maxWidth="sm">
             <AppBar title="Enter Personal Details" />
-        
+
             <TextField
               placeholder="Enter Your Alma Mater"
               label="School"
-              onChange={handleChange('Alma Mater')}
+              onChange={handleChange("school")}
               defaultValue={values.school}
               margin="normal"
               fullWidth
@@ -41,7 +37,7 @@ export class FormPersonalDetails extends Component {
             <TextField
               placeholder="Enter Your Hobbies"
               label="Hobbies"
-              onChange={handleChange('Hobbies')}
+              onChange={handleChange("hobbies")}
               defaultValue={values.hobbies}
               margin="normal"
               fullWidth
@@ -49,28 +45,31 @@ export class FormPersonalDetails extends Component {
             <br />
             <TextField
               placeholder="Enter Your TV Show"
-              label="City"
-              onChange={handleChange('Favorite Show')}
+              label="TV Show"
+              onChange={handleChange("show")}
               defaultValue={values.show}
               margin="normal"
               fullWidth
             />
             <br />
-           <br />
+            <br />
             <Button
-              style={{backgroundColor:'#153084', color: '#FFFFFF'}}
+              style={{ backgroundColor: "#153084", color: "#FFFFFF" }}
               variant="contained"
               onClick={this.continue}
-            >Continue</Button>
+            >
+              Continue
+            </Button>
 
             <br />
 
             <Button
-              style={{backgroundColor:'#85754e', color: '#FFFFFF'}}
+              style={{ backgroundColor: "#85754e", color: "#FFFFFF" }}
               variant="contained"
               onClick={this.back}
-            >Back</Button>
-
+            >
+              Back
+            </Button>
           </Dialog>
         </>
       </MuiThemeProvider>
