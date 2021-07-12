@@ -5,7 +5,7 @@ import ForumIcon from "@material-ui/icons/Forum";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { Link, useHistory } from "react-router-dom";
-
+import image from "./image.png";
 function Header({ backButton }) {
   const history = useHistory();
   return (
@@ -27,11 +27,7 @@ function Header({ backButton }) {
         </IconButton>
       </Link>
       <Link to="/">
-        <img
-          className="header__logo"
-          src="https://1000logos.net/wp-content/uploads/2020/10/Moody%E2%80%99s-Logo.png"
-          alt="moodys logo"
-        />
+        <img className="header__logo" src={image} alt="moodys logo" />
       </Link>
       <Link to="/chat">
         <IconButton>
