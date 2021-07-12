@@ -7,8 +7,8 @@ const firebaseConfig = {
   projectId: "moodys-hackathon",
   storageBucket: "moodys-hackathon.appspot.com",
   messagingSenderId: "104962119225",
-  appId: "1:104962119225:web:1941102990f23407131fe8",
-  measurementId: "G-E0S4SFZX5L",
+  appId: "1:104962119225:web:b2238f8554dbe0a7131fe8",
+  measurementId: "G-Z6SXHC7SFT",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);

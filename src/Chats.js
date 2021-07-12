@@ -20,15 +20,19 @@ const Chats = () => {
 
   return (
     <div className="chats">
-      {people.map((person) => (
-        <Chat
-          key={person.firstName}
-          name={person.firstName + " " + person.lastName}
-          // message="Wuff"
-          team={person.team}
-          profilePic={person.url}
-        />
-      ))}
+      {people.map((person) =>
+        person.team === "MA" ? (
+          <Chat
+            key={person.firstName}
+            name={person.firstName + " " + person.lastName}
+            // message="Wuff"
+            team={person.team}
+            profilePic={person.url}
+          />
+        ) : (
+          ""
+        )
+      )}
     </div>
   );
 };
