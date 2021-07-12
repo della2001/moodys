@@ -10,20 +10,27 @@ function Header({ backButton }) {
   const history = useHistory();
   return (
     <div className="header">
-      {backButton ? (
+      {/* {backButton ? (
         <IconButton onClick={() => history.replace(backButton)}>
           <ArrowBackIosIcon className="header__icon" fontSize="large" />
         </IconButton>
       ) : (
+        <Link to="/form">
+          <IconButton>
+            <PersonIcon className="header__icon" fontSize="large" />
+          </IconButton>
+        </Link>
+      )} */}
+      <Link to="/form">
         <IconButton>
           <PersonIcon className="header__icon" fontSize="large" />
         </IconButton>
-      )}
+      </Link>
       <Link to="/">
         <img
           className="header__logo"
-          src="https://static.dezeen.com/uploads/2017/08/tinder-redesign-graphics_dezeen_sq-1.jpg"
-          alt="tinder logo"
+          src="https://1000logos.net/wp-content/uploads/2020/10/Moody%E2%80%99s-Logo.png"
+          alt="moodys logo"
         />
       </Link>
       <Link to="/chat">
